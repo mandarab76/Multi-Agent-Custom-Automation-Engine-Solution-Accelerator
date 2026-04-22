@@ -27,6 +27,7 @@ class AppConfig:
         self.COSMOSDB_ENDPOINT = self._get_optional("COSMOSDB_ENDPOINT")
         self.COSMOSDB_DATABASE = self._get_optional("COSMOSDB_DATABASE")
         self.COSMOSDB_CONTAINER = self._get_optional("COSMOSDB_CONTAINER")
+        self.MEMORY_PROVIDER = self._get_optional("MEMORY_PROVIDER", "cosmos").lower()
 
         # Azure OpenAI settings
         self.AZURE_OPENAI_DEPLOYMENT_NAME = self._get_required(

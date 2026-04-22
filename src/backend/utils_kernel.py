@@ -13,6 +13,7 @@ import semantic_kernel as sk
 from app_config import config
 from azure.identity import DefaultAzureCredential
 from context.cosmos_memory_kernel import CosmosMemoryContext
+from context.memory_provider import create_memory_context
 
 # Import agent factory and the new AppConfig
 from kernel_agents.agent_factory import AgentFactory
@@ -57,7 +58,7 @@ async def initialize_runtime_and_context(
 
     # Create a kernel and memory store using the AppConfig instance
     kernel = config.create_kernel()
-    memory_store = CosmosMemoryContext(session_id, user_id)
+    memory_store = create_memory_context(session_id, user_id)
 
     return kernel, memory_store
 
