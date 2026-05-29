@@ -9,6 +9,7 @@ from app_config import config
 from azure.ai.agents.models import (ResponseFormatJsonSchema,
                                     ResponseFormatJsonSchemaType)
 from context.cosmos_memory_kernel import CosmosMemoryContext
+from context.memory_provider import create_memory_context
 from kernel_agents.agent_base import BaseAgent
 from kernel_agents.generic_agent import GenericAgent
 from kernel_agents.group_chat_manager import GroupChatManager
@@ -133,7 +134,7 @@ class AgentFactory:
 
         # Create memory store
         if memory_store is None:
-            memory_store = CosmosMemoryContext(session_id, user_id)
+            memory_store = create_memory_context(session_id, user_id)
 
         # Use default system message if none provided
         if system_message is None:
